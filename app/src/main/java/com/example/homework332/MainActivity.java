@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         findViewById(R.id.buttonColor).setOnClickListener(okListner);
+        Utils.onActivityCreateSetTheme(this);
 
         btnOk = findViewById(R.id.button);
         initLanguage();
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.buttonColor:
                     Utils.changeToTheme(MainActivity.this, changedTheme);
             }
+
         }
     };
 
@@ -87,25 +89,27 @@ public class MainActivity extends AppCompatActivity {
         adapterColor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         themeSp.setAdapter(adapterColor);
 
-        AdapterView.OnItemSelectedListener changeColorSelcetedListner = new AdapterView.OnItemSelectedListener(){
+        final AdapterView.OnItemSelectedListener changeColorSelcetedListner = new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String)parent.getItemAtPosition(position);
                 switch (item){
-                    case "Green": Utils.changeThemeSpinner(Utils.THEME_GREEN);
+                    case "Green": Utils.changeToTheme(MainActivity.this ,Utils.THEME_GREEN);
                         break;
-                    case "Black": Utils.changeThemeSpinner(Utils.THEME_BLACK);
+                    case "Black": Utils.changeToTheme(MainActivity.this ,Utils.THEME_BLACK);
                         break;
-                    case "Blue": Utils.changeThemeSpinner(Utils.THEME_BLUE);
+                    case "Blue": Utils.changeToTheme(MainActivity.this ,Utils.THEME_BLUE);
                         break;
                 }
             }
+
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         };
+        //themeSp.setOnItemClickListener((AdapterView.OnItemClickListener) changeColorSelcetedListner);
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override

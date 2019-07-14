@@ -30,10 +30,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Utils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
 
-        findViewById(R.id.buttonColor).setOnClickListener(okListner);
-        Utils.onActivityCreateSetTheme(this);
+        //findViewById(R.id.buttonColor).setOnClickListener(okListner);
+
 
         btnOk = findViewById(R.id.button);
         initLanguage();
@@ -41,15 +42,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private final View.OnClickListener okListner = new View.OnClickListener() {
-        public void onClick(View v) {
-            switch (v.getId()) {
-                case R.id.buttonColor:
-                    Utils.changeToTheme(MainActivity.this, changedTheme);
-            }
-
-        }
-    };
+//    private final View.OnClickListener okListner = new View.OnClickListener() {
+//        public void onClick(View v) {
+//            switch (v.getId()) {
+//                case R.id.buttonColor:
+//                    Utils.changeToTheme(MainActivity.this, Utils.THEME_BLACK);
+//            }
+//
+//        }
+//    };
 
 
 
@@ -84,22 +85,24 @@ public class MainActivity extends AppCompatActivity {
         };
         languagesSp.setOnItemSelectedListener(itemSelectedListener);
 
-        themeSp = findViewById(R.id.colorSpinner);
+        themeSp =(Spinner) findViewById(R.id.colorSpinner);
         ArrayAdapter<CharSequence> adapterColor = ArrayAdapter.createFromResource(this,R.array.themes, android.R.layout.simple_spinner_item);
         adapterColor.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         themeSp.setAdapter(adapterColor);
 
-        final AdapterView.OnItemSelectedListener changeColorSelcetedListner = new AdapterView.OnItemSelectedListener(){
+        AdapterView.OnItemSelectedListener changeColorSelcetedListner = new AdapterView.OnItemSelectedListener(){
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 String item = (String)parent.getItemAtPosition(position);
                 switch (item){
-                    case "Green": Utils.changeToTheme(MainActivity.this ,Utils.THEME_GREEN);
+                    case "Green": changedTheme = Utils.changeThemeSpinner(Utils.THEME_GREEN);
                         break;
-                    case "Black": Utils.changeToTheme(MainActivity.this ,Utils.THEME_BLACK);
+                    case "Black": changedTheme = Utils.changeThemeSpinner(Utils.THEME_BLACK);
                         break;
-                    case "Blue": Utils.changeToTheme(MainActivity.this ,Utils.THEME_BLUE);
+                    case "Blue": changedTheme = Utils.changeThemeSpinner(Utils.THEME_BLUE);
                         break;
+//                    case "Blue": Utils.changeToTheme(MainActivity.this ,Utils.THEME_BLUE);
+//                        break;
                 }
             }
 
@@ -109,7 +112,10 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
+
         //themeSp.setOnItemClickListener((AdapterView.OnItemClickListener) changeColorSelcetedListner);
+        themeSp.setOnItemSelectedListener(changeColorSelcetedListner);
+
 
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,6 +123,11 @@ public class MainActivity extends AppCompatActivity {
                 Configuration configuration = new Configuration();
                 configuration.setLocale(locale);
                 getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
+
+                if (v.getId() == R.id.buttonColor) {
+                    Utils.changeToTheme(MainActivity.this, changedTheme);
+                }
+
                 recreate();
             }
         });

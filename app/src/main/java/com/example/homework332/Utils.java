@@ -20,11 +20,12 @@ public class Utils {
 
     }
 
-//    public static void changeThemeSpinner(int theme)
-//    {
-//        sTheme = theme;
-//
-//    }
+        public static int changeThemeSpinner(int theme)
+        {
+            sTheme = theme;
+            return sTheme;
+
+        }
 
     public static void onActivityCreateSetTheme(Activity activity)
     {

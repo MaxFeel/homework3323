@@ -11,7 +11,7 @@
     <style name="ThemeBlack" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimaryBlack</item>
         <item name="colorButtonNormal">@color/colorPrimaryDarkBlack</item>
-        <item name="android:textColor">@color/colorTextWhite</item>
+        <item name="android:textColor">@color/colorAccentBlack</item>
         <item name="colorAccent">@color/colorAccentBlack</item>
         <item name="android:colorForeground">@color/colorPrimaryDarkBlack</item>
     </style>

@@ -1,18 +1,18 @@
-package com.example.homework332;
+package com.example.homework342;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.Toast;
+import android.widget.TextView;
+
+import com.example.homework342.R;
 
 import java.util.Locale;
 
@@ -20,10 +20,14 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner languagesSp;
     Spinner themeSp;
+    Spinner indentationSp;
     Button  btnOk;
     Locale locale;
     int    changedTheme;
+    int    changedIdentation;
     Activity activity;
+
+    TextView myText;
 
 
 
@@ -31,9 +35,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Utils.onActivityCreateSetTheme(this);
+        indentatUtils.onActivityCreateSetTheme(this);
         setContentView(R.layout.activity_main);
 
         //findViewById(R.id.buttonColor).setOnClickListener(okListner);
+        myText = findViewById(R.id.textView);
 
 
         btnOk = findViewById(R.id.button);
@@ -117,6 +123,34 @@ public class MainActivity extends AppCompatActivity {
         themeSp.setOnItemSelectedListener(changeColorSelcetedListner);
 
 
+        indentationSp = findViewById(R.id.indentationSpinner);
+        ArrayAdapter<CharSequence> indentationAdapter = ArrayAdapter.createFromResource(this,R.array.indentation, android.R.layout.simple_spinner_item);
+        indentationAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        indentationSp.setAdapter(indentationAdapter);
+
+        AdapterView.OnItemSelectedListener changeindentationSelcetedListner = new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String item = (String)parent.getItemAtPosition(position);
+                switch (item){
+                    case "large": changedIdentation = indentatUtils.changeThemeSpinner(indentatUtils.THEME_LARGE);
+                        break;
+                    case "average": changedIdentation = indentatUtils.changeThemeSpinner(indentatUtils.THEME_AVERAGE);
+                        break;
+                    case "small": changedIdentation = indentatUtils.changeThemeSpinner(indentatUtils.THEME_SMALL);
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        };
+
+        indentationSp.setOnItemSelectedListener(changeindentationSelcetedListner);
+
+
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -124,13 +158,21 @@ public class MainActivity extends AppCompatActivity {
                 configuration.setLocale(locale);
                 getResources().updateConfiguration(configuration, getBaseContext().getResources().getDisplayMetrics());
 
-                if (v.getId() == R.id.buttonColor) {
+                //if (v.getId() == R.id.buttonColor) {
                     Utils.changeToTheme(MainActivity.this, changedTheme);
-                }
+                //}
+
+                //if(v.getId() == R.id.buttonColor){
+                    indentatUtils.changeToTheme(MainActivity.this,changedIdentation);
+                //}
 
                 recreate();
             }
         });
+
+
+
+
 
 
     }

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">hausaufgaben3.3.2</string>
+    <string name="app_name">hausaufgaben3.4.2</string>
     <string name="textTranslate">Ideologische überlegungen höchster Ordnung sowie Rahmen und Ort der Ausbildung sind ein Interessantes experiment, um die entsprechenden aktivierungsbedingungen zu überprüfen. Ideologische überlegungen höchster Ordnung, sowie die Stärkung und Entwicklung der Struktur ermöglicht es Ihnen, wichtige Aufgaben zu erfüllen, um die entsprechenden Bedingungen für die Aktivierung zu entwickeln.</string>
     <string name="btnOk">OK</string>
     <string-array name="languages">
@@ -12,5 +12,11 @@
         <item>Green</item>
         <item>Black</item>
         <item>Blue</item>
+    </string-array>
+
+    <string-array name="indentation">
+        <item>large</item>
+        <item>average</item>
+        <item>small</item>
     </string-array>
 </resources>

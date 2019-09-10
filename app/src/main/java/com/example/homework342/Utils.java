@@ -1,7 +1,9 @@
-package com.example.homework332;
+package com.example.homework342;
 
 import android.app.Activity;
 import android.content.Intent;
+
+import com.example.homework342.R;
 
 public class Utils {
     private static int sTheme;

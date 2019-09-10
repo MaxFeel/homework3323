@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">homework3.3.2</string>
+    <string name="app_name">homework3.4.2</string>
     <string name="textTranslate">Ideological considerations of the highest order, as well as the framework and place of training is an interesting experiment to check the appropriate activation conditions. Ideological considerations of the highest order, as well as the strengthening and development of the structure allows you to perform important tasks to develop the appropriate conditions for activation.</string>
     <string name="btnOk">OK</string>
     <string-array name="languages">
@@ -12,5 +12,11 @@
         <item>Green</item>
         <item>Black</item>
         <item>Blue</item>
+    </string-array>
+
+    <string-array name="indentation">
+        <item>large</item>
+        <item>average</item>
+        <item>small</item>
     </string-array>
 </resources>

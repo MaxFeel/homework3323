@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">задание3.3.2</string>
+    <string name="app_name">задание3.4.2</string>
     <string name="textTranslate">Идейные соображения высшего порядка, а также рамки и место обучения кадров представляет собой интересный эксперимент проверки соответствующий условий активизации. Идейные соображения высшего порядка, а также укрепление и развитие структуры позволяет выполнять важные задания по разработке соответствующий условий активизации.</string>
     <string name="btnOk">OK</string>
     <string-array name="languages">
@@ -12,5 +12,11 @@
         <item>Green</item>
         <item>Black</item>
         <item>Blue</item>
+    </string-array>
+
+    <string-array name="indentation">
+        <item>large</item>
+        <item>average</item>
+        <item>small</item>
     </string-array>
 </resources>
